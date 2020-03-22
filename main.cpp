@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "randomnumber.h"           //подключаем заголовочный файл с++
 
 int main(int argc, char *argv[])
 {
@@ -14,6 +15,9 @@ int main(int argc, char *argv[])
         if (!obj && url == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
+
+
+    qmlRegisterType<RandomNumber>("RandomNumber", 1, 0, "RandomNumber");  //метод для подключения к qml, версия 1.0
     engine.load(url);
 
     return app.exec();
